@@ -1,0 +1,150 @@
+<div class="container">
+	<div class="row">
+		<h2>Contrats</h2>
+        
+    <div class="text-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="color: aliceblue; "><i class="fa fa-plus"></i></button></div>
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Contrat</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form>
+              <div class="form-group" >
+                <label for="recipient-name" class="col-form-label" >code_contrat:</label>
+                <input [(ngModel)]="contrat.code_contrat" type="text" class="form-control" id="recipient-name" name="code_contrat">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">date_debut:</label>
+                <input [(ngModel)]="contrat.date_debut" type="date" class="form-control" id="recipient-name" name="date_debut">
+            </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> date_fin:</label>
+                <input [(ngModel)]="contrat.date_fin" type="date" class="form-control" id="recipient-name" name="date_fin">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> duree:</label>
+                <input [(ngModel)]="contrat.duree" type="number" class="form-control" id="recipient-name" name="duree">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> montant:</label>
+                <input [(ngModel)]="contrat.montant" type="number" class="form-control" id="recipient-name" name="montant">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> id_client:</label>
+                <input [(ngModel)]="contrat.id_client" type="number" class="form-control" id="recipient-name" name="id_client">
+            </div>
+        </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button  (click)="ajoutcontrat()"  class="btn btn-primary"  data-dismiss="modal">ajouter</button>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-condensed" id="results-table">
+            <thead>
+              <th >id contrat<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >code contrat<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >date_debut<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >date_fin<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >duree<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >montant<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >client<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contrat of contrats">
+                    <td>{{contrat.id_contrat}}</td>
+                    <td>{{contrat.code_contrat}} </td>
+                    <td>{{contrat.date_debut}}</td>
+                    <td>{{contrat.date_fin}}</td>
+                    <td>{{contrat.duree}}</td>
+                    <td>{{contrat.montant}}</td>
+                    <td>{{contrat.client.id_client}}</td>
+                    <td><button (click)="deletecontrat(contrat.id_contrat)"  class="btn btn-primary" >delete</button>
+                    <td><button  [routerLink]="['/contrats/update', contrat.id_contrat]"  class="btn btn-primary" >update</button>
+                      <!-- <td><a  href="/update/{{client.id_client}}"  class="btn btn-primary" >update</a>  -->
+
+                    </td>
+                </tr>
+                <!-- <tr><td>2</td><td>Something</td><td>Something else...</td></tr>
+                <tr><td>3</td><td>Something</td><td>Something else...</td></tr>
+                <tr><td>4</td><td>Something</td><td>Something else...</td></tr> -->
+            </tbody>
+        </table>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>Angular 14 Reactive Forms Validation Example - ItSolutionStuff.com</h1>
+   
+<form [formGroup]="form" (ngSubmit)="submit()">
+        
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+            formControlName="name"
+            id="name" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+            <div *ngIf="f['name'].errors && f['name'].errors['required']">Name is required.</div>
+            <div *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be 3 character.</div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+            formControlName="email"
+            id="email" 
+            type="text" 
+            class="form-control">
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+            <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+            <div *ngIf="f['email'].errors && f['email'].errors['email']">Please, enter valid email address.</div>
+        </div>
+    </div>
+     
+    <div class="form-group">
+        <label for="body">Body</label>
+        <textarea 
+            formControlName="body"
+            id="body" 
+            type="text" 
+            class="form-control">
+        </textarea>
+        <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
+            <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is required.</div>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Submit</button>
+</form> -->
+

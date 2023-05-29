@@ -1,0 +1,33 @@
+<!-- <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" > -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier Client:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label" >Nom:</label>
+              <input [(ngModel)]="client.name" type="text" class="form-control" id="recipient-name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Numéro:</label>
+              <input [(ngModel)]="client.numero" type="number" class="form-control" id="recipient-name" name="numero">
+          </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label"> Mail:</label>
+              <input [(ngModel)]="client.mail" type="text" class="form-control" id="recipient-name" name="mail">
+          </div>
+            
+      </form>
+        </div>
+        <div class="modal-footer">
+
+          <button  (click)="updateclient()"  class="btn btn-primary"  data-dismiss="modal">modifoer</button>
+        </div>
+      </div>
+    <!-- </div> -->
+    

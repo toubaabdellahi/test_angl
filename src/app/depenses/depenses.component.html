@@ -1,0 +1,97 @@
+<div class="container">
+	<div class="row">
+		<h2>Depenses</h2>
+        
+    <div class="text-right"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="color: aliceblue; "><i class="fa fa-plus"></i></button></div>
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Depenses</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form>
+              <div class="form-group" >
+                <label for="recipient-name" class="col-form-label" >date_creation:</label>
+                <input [(ngModel)]="depense.date_creation" type="date" class="form-control" id="recipient-name" name="code_contrat">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">detail:</label>
+                <input [(ngModel)]="depense.detail" type="text" class="form-control" id="recipient-name" name="date_debut">
+            </div>
+        
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> montant:</label>
+                <input [(ngModel)]="depense.montant" type="number" class="form-control" id="recipient-name" name="montant">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> Beneficiare_id:</label>
+                <input [(ngModel)]="depense.Beneficiare_id" type="number" class="form-control" id="recipient-name" name="date_fin">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> Rubrique_id:</label>
+                <input [(ngModel)]="depense.Rubrique_id" type="number" class="form-control" id="recipient-name" name="duree">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> id_contrat:</label>
+                <input [(ngModel)]="depense.id_contrat" type="number" class="form-control" id="recipient-name" name="id_contrat">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label"> Etats_id:</label>
+                <input [(ngModel)]="depense.Etats_id" type="number" class="form-control" id="recipient-name" name="duree">
+            </div>
+        </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button  (click)="ajoutdepense()"  class="btn btn-primary"  data-dismiss="modal">ajouter</button>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-hover table-condensed" id="results-table">
+            <thead>
+              <th >id Depense<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >dtae creation<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >detail<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >montant<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >Beneficiare_id<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >Rubrique_id<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >id_contrat<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+                <th >Etats_id<span style="margin-left: 5px;" class="glyphicon glyphicon-dynamic"></span></th>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let depense of depenses">
+                    <td>{{depense.id_depense}}</td>
+                    <td>{{depense.date_creation}}</td>
+                    <td>{{depense.detail}} </td>
+                    <td>{{depense.montant}}</td>
+                    <td>{{depense.beneficiare.id}}</td>
+                    <td>{{depense.rubrique.id}}</td>
+                    <td>{{depense.contrat.id_contrat}}</td>
+                    <td>{{depense.etat.id}}</td>
+                    <td><button (click)="deletedepense(depense.id_depense)"  class="btn btn-primary" >delete</button>
+                    <td><button  [routerLink]="['/depenses/update', depense.id_depense]"  class="btn btn-primary" >update</button>
+                      <!-- <td><a  href="/update/{{client.id_client}}"  class="btn btn-primary" >update</a>  -->
+
+                    </td>
+                </tr>
+              
+            </tbody>
+        </table>
+	</div>
+</div>
+
+
+
+
+
+
+
+
